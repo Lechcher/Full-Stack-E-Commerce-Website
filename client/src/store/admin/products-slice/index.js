@@ -3,19 +3,19 @@ import axios from "axios";
 
 const initialState = {
   isLoading: false,
-  productList: []
+  productList: [],
 };
 
 export const addNewProduct = createAsyncThunk(
   "/products/addnewproduct",
   async (formData) => {
     const result = await axios.post(
-      "https://full-stack-e-commerce-website-sanb.onrender.com/api/admin/products/add",
+      "http://localhost:5000/api/admin/products/add",
       formData,
       {
         headers: {
-          "Content-Type": "application/json"
-        }
+          "Content-Type": "application/json",
+        },
       }
     );
 
@@ -27,7 +27,7 @@ export const fetchAllProducts = createAsyncThunk(
   "/products/fetchAllProducts",
   async () => {
     const result = await axios.get(
-      "https://full-stack-e-commerce-website-sanb.onrender.com/api/admin/products/get"
+      "http://localhost:5000/api/admin/products/get"
     );
 
     return result?.data;
@@ -38,12 +38,12 @@ export const editProduct = createAsyncThunk(
   "/products/editProduct",
   async ({ id, formData }) => {
     const result = await axios.put(
-      `https://full-stack-e-commerce-website-sanb.onrender.com/api/admin/products/edit/${id}`,
+      `http://localhost:5000/api/admin/products/edit/${id}`,
       formData,
       {
         headers: {
-          "Content-Type": "application/json"
-        }
+          "Content-Type": "application/json",
+        },
       }
     );
 
@@ -55,7 +55,7 @@ export const deleteProduct = createAsyncThunk(
   "/products/deleteProduct",
   async (id) => {
     const result = await axios.delete(
-      `https://full-stack-e-commerce-website-sanb.onrender.com/api/admin/products/delete/${id}`
+      `http://localhost:5000/api/admin/products/delete/${id}`
     );
 
     return result?.data;
@@ -79,7 +79,7 @@ const AdminProductsSlice = createSlice({
         state.isLoading = false;
         state.productList = [];
       });
-  }
+  },
 });
 
 export default AdminProductsSlice.reducer;

@@ -4,7 +4,7 @@ import axios from "axios";
 const initialState = {
   isAuthenticated: false,
   isLoading: true,
-  user: null
+  user: null,
 };
 
 export const registerUser = createAsyncThunk(
@@ -12,10 +12,10 @@ export const registerUser = createAsyncThunk(
 
   async (formData) => {
     const response = await axios.post(
-      "https://full-stack-e-commerce-website-sanb.onrender.com/api/auth/register",
+      "http://localhost:5000/api/auth/register",
       formData,
       {
-        withCredentials: true
+        withCredentials: true,
       }
     );
 
@@ -28,10 +28,10 @@ export const loginUser = createAsyncThunk(
 
   async (formData) => {
     const response = await axios.post(
-      "https://full-stack-e-commerce-website-sanb.onrender.com/api/auth/login",
+      "http://localhost:5000/api/auth/login",
       formData,
       {
-        withCredentials: true
+        withCredentials: true,
       }
     );
 
@@ -44,10 +44,10 @@ export const logoutUser = createAsyncThunk(
 
   async () => {
     const response = await axios.post(
-      "https://full-stack-e-commerce-website-sanb.onrender.com/api/auth/logout",
+      "http://localhost:5000/api/auth/logout",
       {},
       {
-        withCredentials: true
+        withCredentials: true,
       }
     );
 
@@ -60,13 +60,13 @@ export const checkAuth = createAsyncThunk(
 
   async () => {
     const response = await axios.get(
-      "https://full-stack-e-commerce-website-sanb.onrender.com/api/auth/check-auth",
+      "http://localhost:5000/api/auth/check-auth",
       {
         withCredentials: true,
         headers: {
           "Cache-Control":
-            "no-store, no-cache, must-revalidate, proxy-revalidate"
-        }
+            "no-store, no-cache, must-revalidate, proxy-revalidate",
+        },
       }
     );
 
@@ -78,7 +78,7 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setUser: (state, action) => {}
+    setUser: (state, action) => {},
   },
   extraReducers: (builder) => {
     builder
@@ -128,7 +128,7 @@ const authSlice = createSlice({
         state.user = null;
         state.isAuthenticated = false;
       });
-  }
+  },
 });
 
 export const { setUser } = authSlice.actions;

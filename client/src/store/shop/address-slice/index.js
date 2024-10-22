@@ -1,16 +1,16 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
   isLoading: false,
-  addressList: []
+  addressList: [],
 };
 
 export const addNewAddress = createAsyncThunk(
   "/addresses/addNewAddress",
   async (formData) => {
     const response = await axios.post(
-      "https://full-stack-e-commerce-website-sanb.onrender.com/api/shop/address/add",
+      "http://localhost:5000/api/shop/address/add",
       formData
     );
 
@@ -22,7 +22,7 @@ export const fetchAllAddresses = createAsyncThunk(
   "/addresses/fetchAllAddresses",
   async (userId) => {
     const response = await axios.get(
-      `https://full-stack-e-commerce-website-sanb.onrender.com/api/shop/address/get/${userId}`
+      `http://localhost:5000/api/shop/address/get/${userId}`
     );
 
     return response.data;
@@ -33,7 +33,7 @@ export const editaAddress = createAsyncThunk(
   "/addresses/editaAddress",
   async ({ userId, addressId, formData }) => {
     const response = await axios.put(
-      `https://full-stack-e-commerce-website-sanb.onrender.com/api/shop/address/update/${userId}/${addressId}`,
+      `http://localhost:5000/api/shop/address/update/${userId}/${addressId}`,
       formData
     );
 
@@ -45,7 +45,7 @@ export const deleteAddress = createAsyncThunk(
   "/addresses/deleteAddress",
   async ({ userId, addressId }) => {
     const response = await axios.delete(
-      `https://full-stack-e-commerce-website-sanb.onrender.com/api/shop/address/delete/${userId}/${addressId}`
+      `http://localhost:5000/api/shop/address/delete/${userId}/${addressId}`
     );
 
     return response.data;
@@ -78,7 +78,7 @@ const addressSlice = createSlice({
         state.isLoading = false;
         state.addressList = [];
       });
-  }
+  },
 });
 
 export default addressSlice.reducer;
