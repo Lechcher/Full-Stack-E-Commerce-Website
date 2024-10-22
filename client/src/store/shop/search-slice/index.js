@@ -3,14 +3,14 @@ import axios from "axios";
 
 const initialState = {
   isLoading: false,
-  searchResults: [],
+  searchResults: []
 };
 
 export const getSearchResults = createAsyncThunk(
   "/order/getSearchResults",
   async (keyword) => {
     const response = await axios.get(
-      `http://localhost:5000/api/shop/search/${keyword}`
+      `https://full-stack-e-commerce-website-sanb.onrender.com/api/shop/search/${keyword}`
     );
 
     return response.data;
@@ -23,7 +23,7 @@ const searchSlice = createSlice({
   reducers: {
     resetSearchResults: (state) => {
       state.searchResults = [];
-    },
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -38,7 +38,7 @@ const searchSlice = createSlice({
         state.isLoading = false;
         state.searchResults = [];
       });
-  },
+  }
 });
 
 export const { resetSearchResults } = searchSlice.actions;

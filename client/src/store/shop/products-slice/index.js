@@ -4,7 +4,7 @@ import axios from "axios";
 const initialState = {
   isLoading: false,
   productList: [],
-  productDetails: null,
+  productDetails: null
 };
 
 export const fetchAllFilteredProducts = createAsyncThunk(
@@ -14,11 +14,11 @@ export const fetchAllFilteredProducts = createAsyncThunk(
 
     const query = new URLSearchParams({
       ...filterParams,
-      sortBy: sortParams,
+      sortBy: sortParams
     });
 
     const result = await axios.get(
-      `http://localhost:5000/api/shop/products/get?${query}`
+      `https://full-stack-e-commerce-website-sanb.onrender.com/api/shop/products/get?${query}`
     );
 
     console.log(result);
@@ -31,7 +31,7 @@ export const fetchProductDetails = createAsyncThunk(
   "/products/fetchProductDetails",
   async (id) => {
     const result = await axios.get(
-      `http://localhost:5000/api/shop/products/get/${id}`
+      `https://full-stack-e-commerce-website-sanb.onrender.com/api/shop/products/get/${id}`
     );
 
     return result?.data;
@@ -44,7 +44,7 @@ const shoppingProductSlice = createSlice({
   reducers: {
     setProductDetails: (state) => {
       state.productDetails = null;
-    },
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -70,7 +70,7 @@ const shoppingProductSlice = createSlice({
         state.isLoading = false;
         state.productDetails = null;
       });
-  },
+  }
 });
 
 export const { setProductDetails } = shoppingProductSlice.actions;

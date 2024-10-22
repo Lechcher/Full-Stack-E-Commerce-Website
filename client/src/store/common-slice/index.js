@@ -3,14 +3,14 @@ import axios from "axios";
 
 const initialState = {
   isLoading: false,
-  featureImageList: [],
+  featureImageList: []
 };
 
 export const getFeatureImages = createAsyncThunk(
   "/order/getFeatureImages",
   async () => {
     const response = await axios.get(
-      `http://localhost:5000/api/common/feature/get`
+      `https://full-stack-e-commerce-website-sanb.onrender.com/api/common/feature/get`
     );
 
     return response.data;
@@ -21,7 +21,7 @@ export const addFeatureImage = createAsyncThunk(
   "/order/addFeatureImage",
   async (image) => {
     const response = await axios.post(
-      `http://localhost:5000/api/common/feature/add`,
+      `https://full-stack-e-commerce-website-sanb.onrender.com/api/common/feature/add`,
       { image }
     );
 
@@ -46,7 +46,7 @@ const commonSlice = createSlice({
         state.isLoading = false;
         state.featureImageList = [];
       });
-  },
+  }
 });
 
 export default commonSlice.reducer;
