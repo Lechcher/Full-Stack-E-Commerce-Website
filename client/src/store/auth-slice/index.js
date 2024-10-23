@@ -12,7 +12,7 @@ export const registerUser = createAsyncThunk(
 
   async (formData) => {
     const response = await axios.post(
-      "http://localhost:5000/api/auth/register",
+      "https://api.render.com/deploy/srv-csc5galds78s738iuq1g?key=f5MPCuGI6Vw/api/auth/register",
       formData,
       {
         withCredentials: true,
@@ -28,7 +28,7 @@ export const loginUser = createAsyncThunk(
 
   async (formData) => {
     const response = await axios.post(
-      "http://localhost:5000/api/auth/login",
+      "https://api.render.com/deploy/srv-csc5galds78s738iuq1g?key=f5MPCuGI6Vw/api/auth/login",
       formData,
       {
         withCredentials: true,
@@ -44,7 +44,7 @@ export const logoutUser = createAsyncThunk(
 
   async () => {
     const response = await axios.post(
-      "http://localhost:5000/api/auth/logout",
+      "https://api.render.com/deploy/srv-csc5galds78s738iuq1g?key=f5MPCuGI6Vw/api/auth/logout",
       {},
       {
         withCredentials: true,
@@ -60,7 +60,7 @@ export const checkAuth = createAsyncThunk(
 
   async () => {
     const response = await axios.get(
-      "http://localhost:5000/api/auth/check-auth",
+      "https://api.render.com/deploy/srv-csc5galds78s738iuq1g?key=f5MPCuGI6Vw/api/auth/check-auth",
       {
         withCredentials: true,
         headers: {
