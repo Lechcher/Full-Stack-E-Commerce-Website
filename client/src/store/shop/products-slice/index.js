@@ -18,7 +18,7 @@ export const fetchAllFilteredProducts = createAsyncThunk(
     });
 
     const result = await axios.get(
-      `https://api.render.com/deploy/srv-csc5galds78s738iuq1g?key=f5MPCuGI6Vw/api/shop/products/get?${query}`
+      `https://api.render.com/deploy/srv-csc5galds78s738iuq1g?key=f5MPCuGI6Vw:5000/api/shop/products/get?${query}`
     );
 
     console.log(result);
@@ -31,7 +31,7 @@ export const fetchProductDetails = createAsyncThunk(
   "/products/fetchProductDetails",
   async (id) => {
     const result = await axios.get(
-      `https://api.render.com/deploy/srv-csc5galds78s738iuq1g?key=f5MPCuGI6Vw/api/shop/products/get/${id}`
+      `https://api.render.com/deploy/srv-csc5galds78s738iuq1g?key=f5MPCuGI6Vw:5000/api/shop/products/get/${id}`
     );
 
     return result?.data;
