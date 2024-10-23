@@ -50,7 +50,7 @@ function MenuItems() {
   }
 
   return (
-    <nav className="flex flex-col mb-3 lg:mb-0 lg:items-center gap-6 lg:flex-row">
+    <nav className="flex flex-col gap-6 mb-3 lg:mb-0 lg:items-center lg:flex-row">
       {shoppingViewHeaderMenuItems.map((menuItem) => (
         <Label
           onClick={() => handleNavigate(menuItem)}
@@ -82,7 +82,7 @@ function HeaderRightContent() {
   console.log(cartItems, "sangam");
 
   return (
-    <div className="flex lg:items-center lg:flex-row flex-col gap-4">
+    <div className="flex flex-col gap-4 lg:items-center lg:flex-row">
       <Sheet open={openCartSheet} onOpenChange={() => setOpenCartSheet(false)}>
         <Button
           onClick={() => setOpenCartSheet(true)}
@@ -109,23 +109,26 @@ function HeaderRightContent() {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Avatar className="bg-black">
-            <AvatarFallback className="bg-black text-white font-extrabold">
+            <AvatarFallback className="font-extrabold text-white bg-black">
               {user?.userName[0].toUpperCase()}
             </AvatarFallback>
           </Avatar>
         </DropdownMenuTrigger>
-        <DropdownMenuContent side="right" className="w-56">
+        <DropdownMenuContent
+          side="right"
+          className="absolute w-56 top-6 right-5"
+        >
           <DropdownMenuLabel>
             Đã đăng nhập như {user?.userName}
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => navigate("/shop/account")}>
-            <UserCog className="mr-2 h-4 w-4" />
-            Account
+            <UserCog className="w-4 h-4 mr-2" />
+            Tài khoản
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={handleLogout}>
-            <LogOut className="mr-2 h-4 w-4" />
+            <LogOut className="w-4 h-4 mr-2" />
             Đăng xuất
           </DropdownMenuItem>
         </DropdownMenuContent>
@@ -138,16 +141,16 @@ function ShoppingHeader() {
   const { isAuthenticated } = useSelector((state) => state.auth);
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background">
-      <div className="flex h-16 items-center justify-between px-4 md:px-6">
+    <header className="fixed top-0 z-40 w-full border-b bg-background">
+      <div className="flex items-center justify-between h-16 px-4 md:px-6">
         <Link to="/shop/home" className="flex items-center gap-2">
-          <HousePlug className="h-6 w-6" />
+          <HousePlug className="w-6 h-6" />
           <span className="font-bold">Ecommerce</span>
         </Link>
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="outline" size="icon" className="lg:hidden">
-              <Menu className="h-6 w-6" />
+              <Menu className="w-6 h-6" />
               <span className="sr-only">Bật/Tắt menu tiêu đề</span>
             </Button>
           </SheetTrigger>

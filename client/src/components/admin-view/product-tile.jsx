@@ -43,7 +43,7 @@ function AdminProductTile({
           >
             Chỉnh sửa
           </Button>
-          <Button onClick={() => handleDelete(product?._id)}>Delete</Button>
+          <Button onClick={() => handleDelete(product?._id)}>Xóa</Button>
         </CardFooter>
       </div>
     </Card>

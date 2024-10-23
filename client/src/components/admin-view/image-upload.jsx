@@ -1,9 +1,9 @@
+import axios from "axios";
 import { FileIcon, UploadCloudIcon, XIcon } from "lucide-react";
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
 import { useEffect, useRef } from "react";
 import { Button } from "../ui/button";
-import axios from "axios";
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
 import { Skeleton } from "../ui/skeleton";
 
 function ProductImageUpload({
@@ -14,7 +14,7 @@ function ProductImageUpload({
   setUploadedImageUrl,
   setImageLoadingState,
   isEditMode,
-  isCustomStyling = false,
+  isCustomStyling = false
 }) {
   const inputRef = useRef(null);
 
@@ -69,7 +69,7 @@ function ProductImageUpload({
     <div
       className={`w-full  mt-4 ${isCustomStyling ? "" : "max-w-md mx-auto"}`}
     >
-      <Label className="text-lg font-semibold mb-2 block">Upload Image</Label>
+      <Label className="text-lg font-semibold mb-2 block">Tải ảnh lên</Label>
       <div
         onDragOver={handleDragOver}
         onDrop={handleDrop}

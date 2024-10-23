@@ -106,7 +106,7 @@ function AdminProducts() {
     <Fragment>
       <div className="mb-5 w-full flex justify-end">
         <Button onClick={() => setOpenCreateProductsDialog(true)}>
-          Add New Product
+          Thêm sản phẩm mới
         </Button>
       </div>
       <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-4">
